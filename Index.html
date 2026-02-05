@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sweet Card</title>
+  <style>
+    :root{
+      --bg:#fff6fb;
+      --card-bg: linear-gradient(180deg,#fff 0%, #fff0f7 100%);
+      --accent:#ff4da6;
+      --muted:#888;
+      --radius:16px;
+      --shadow: 0 8px 30px rgba(255,77,166,0.12);
+      --glass: rgba(255,255,255,0.6);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                   Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg,#ffeef8 0%, #fffafc 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .card {
+      width: 100%;
+      max-width:420px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(255,77,166,0.06);
+    }
+
+    .pulsing-heart {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:72px;
+      height:72px;
+      margin:0 auto 12px;
+      font-size:32px;
+      border-radius:999px;
+      color:white;
+      background: linear-gradient(135deg,var(--accent), #ff7ac4 80%);
+      box-shadow: 0 6px 18px rgba(255,77,166,0.15);
+      transform-origin:center;
+    }
+
+    /* Pulse animation */
+    @keyframes pulse {
+      0%{ transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,77,166,0)); }
+      40%{ transform: scale(1.12); filter: drop-shadow(0 6px 24px rgba(255,77,166,0.12)); }
+      100%{ transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,77,166,0)); }
+    }
+
+    .pulsing-heart { animation: pulse 1.8s ease-in-out infinite; }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .pulsing-heart { animation: none; }
+    }
+
+    h1 {
+      margin: 6px 0 8px;
+      font-size: 1.4rem;
+      line-height:1.15;
+      color:#3b2233;
+    }
+
+    .gorgeous-text {
+      margin: 8px 0 0;
+      color:#5a394b;
+      font-size: 1.02rem;
+      line-height:1.45;
+      white-space: pre-line; /* preserve intended breaks */
+    }
+
+    .gorgeous-text strong {
+      color: var(--accent);
+      font-weight:700;
+      letter-spacing:0.2px;
+    }
+
+    .meta {
+      margin-top:18px;
+      font-size:0.9rem;
+      color:var(--muted);
+    }
+
+    /* small screens */
+    @media (max-width:420px){
+      .card { padding:20px; }
+      .pulsing-heart { width:60px; height:60px; font-size:28px; }
+      h1 { font-size:1.2rem; }
+    }
+
+    /* visually-hidden for screen readers */
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+  </style>
+</head>
+<body>
+  <article class="card" id="success" aria-labelledby="card-title" role="region">
+    <div class="pulsing-heart" aria-hidden="true">💖</div>
+    <span class="sr-only">Animated heart</span>
+
+    <h1 id="card-title">I knew you'd say yes!</h1>
+
+    <p class="gorgeous-text" aria-label='message'>
+      "Do you know that you are
+      <strong>soooooo beautiful</strong>...
+      thinking about you all day"“Not everyone becomes a memory. Some become a feeling that never leaves.”
+“There’s a presence I carry
+    </p>
+
+    <div class="meta" aria-hidden="true">
+   can't forget you 🪽
+    </div>
+  </article>
+</body>
+</html>
